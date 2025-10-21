@@ -1,21 +1,22 @@
-﻿using Ejercicio1.Models.Exportadores;
+﻿using Prueba_ejer1.Models.Exportadores;
 
-namespace Ejercicio1.Models;
+namespace Prueba_ejer1.Models;
 
-public class Multa : IExportable, IComparable
+public class Multa:IExportador,IExportable
+
 {
-    public string Patente {  get; set; }
+    public string Patente { get; set; }
     public double Importe { get; set; }
     public DateOnly Vencimiento { get; set; }
-    public Multa (string patente, double importe, DateOnly V)
+    public Multa(string patente, double importe, DateOnly V)
     {
-        this.Patente = patente;
-        this.Importe = importe;
-        this.Vencimiento = V;
+        Patente = patente;
+        Importe = importe;
+        Vencimiento = V;
     }
     public Multa()
     {
-        
+
     }
 
     public bool Importar(string data, IExportador exportador)
@@ -38,8 +39,18 @@ public class Multa : IExportable, IComparable
     public int CompareTo(object obj)
     {
         Multa multa = obj as Multa;
-        if (multa != null) 
-            return this.Patente.CompareTo(this.Importe);
+        if (multa != null)
+            return Patente.CompareTo(Importe);
         return -1;
+    }
+
+    string IExportador.Exportar(Multa multa)
+    {
+        throw new NotImplementedException();
+    }
+
+    bool IExportador.Importar(string data, Multa multa)
+    {
+        throw new NotImplementedException();
     }
 }

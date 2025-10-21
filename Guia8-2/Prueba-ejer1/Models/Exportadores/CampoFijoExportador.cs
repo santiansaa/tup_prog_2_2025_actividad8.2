@@ -1,14 +1,11 @@
 ﻿
 
 using System.Globalization;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace Ejercicio1.Models.Exportadores;
+namespace Prueba_ejer1.Models.Exportadores;
 
 public class CampoFijoExportador : IExportador
 {
-    
-
     public string Exportar(Multa m)
     {
         return $@"{m.Patente}   {m.Vencimiento}   {m.Importe:f2}";

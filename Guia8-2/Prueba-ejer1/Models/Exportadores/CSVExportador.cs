@@ -1,13 +1,14 @@
 ﻿
+
 using System.Text.RegularExpressions;
 
-namespace Ejercicio1.Models.Exportadores;
+namespace Prueba_ejer1.Models.Exportadores;
 
-public class JSONExportador : IExportador
+public class CSVExportador : IExportador
 {
     public string Exportar(Multa m)
     {
-        return $"{m.Patente};{m.Vencimiento};{m.Importe:f2}";
+        return $"{m.Patente};{m.Vencimiento:dd/MM/yyyy};{m.Importar:f2}";
     }
 
     public bool Importar(string data, Multa m)
@@ -27,3 +28,4 @@ public class JSONExportador : IExportador
         return false;
     }
 }
+

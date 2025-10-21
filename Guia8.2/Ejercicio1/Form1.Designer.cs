@@ -41,6 +41,7 @@
             openFileDialog1 = new OpenFileDialog();
             saveFileDialog1 = new SaveFileDialog();
             btnImportar = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -96,7 +97,7 @@
             // 
             // btnActualizar
             // 
-            btnActualizar.Location = new Point(263, 139);
+            btnActualizar.Location = new Point(263, 117);
             btnActualizar.Name = "btnActualizar";
             btnActualizar.Size = new Size(75, 23);
             btnActualizar.TabIndex = 7;
@@ -121,6 +122,7 @@
             lsbVer.Name = "lsbVer";
             lsbVer.Size = new Size(230, 184);
             lsbVer.TabIndex = 10;
+            lsbVer.SelectedIndexChanged += lsbVer_SelectedIndexChanged;
             // 
             // dtpVencimiento
             // 
@@ -145,11 +147,21 @@
             btnImportar.UseVisualStyleBackColor = true;
             btnImportar.Click += btnImportar_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(263, 146);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 13;
+            button1.Text = "Actualizar";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(366, 325);
+            Controls.Add(button1);
             Controls.Add(btnImportar);
             Controls.Add(dtpVencimiento);
             Controls.Add(lsbVer);
@@ -186,5 +198,6 @@
         private ListBox listBox1;
         public DateTimePicker dtpVencimiento;
         private Button btnImportar;
+        private Button button1;
     }
 }

@@ -1,6 +1,8 @@
 ﻿
 
 
+using System.Text.RegularExpressions;
+
 namespace Ejercicio1.Models.Exportadores;
 
 public class CSVExportador : IExportador
@@ -12,19 +14,19 @@ public class CSVExportador : IExportador
 
     public bool Importar(string data, Multa m)
     {
-        string[] campos = data.Split(';');
-
-        if (campos.Length != 3) return false;
-
-        string patente = campos[0];
-        DateOnly vencimiento = DateOnly.ParseExact(campos[1], "dd/MM/yyyy");
-        double importe = double.Parse(campos[2]);
-
-        m.Patente = patente;
-        m.Vencimiento = vencimiento;
-        m.Importe = importe;
-
-        return true;
+        Regex regex = new Regex(@"^([A-Z]{3}\d{3});(\d{2}/\d{2}/\d{4});(\d+,\d+)$");
+        Match match = regex.Match(data);
+        if (match.Success)
+        {
+            string[] datos = match.Groups[0].Value.Split(';');
+            string patente = datos[0];
+            DateTime fecha = Convert.ToDateTime(datos[1]);
+            DateOnly vencimiento = new DateOnly(fecha.Year, fecha.Month, fecha.Day);
+            double importe = Convert.ToDouble(datos[2]);
+            m.Patente = patente; m.Importe = importe; m.Vencimiento = vencimiento;
+            return true;
+        }
+        return false;
     }
 }
 

@@ -1,9 +1,9 @@
 ﻿
 using System.Text.RegularExpressions;
 
-namespace Ejercicio1.Models.Exportadores;
+namespace Prueba_ejer1.Models.Exportadores;
 
-public class JSONExportador : IExportador
+internal class JSONExportador : IExportador
 {
     public string Exportar(Multa m)
     {
@@ -27,3 +27,4 @@ public class JSONExportador : IExportador
         return false;
     }
 }
+

@@ -1,6 +1,8 @@
-﻿using System.Text.RegularExpressions;
+﻿
 
-namespace Ejercicio1.Models.Exportadores;
+using System.Text.RegularExpressions;
+
+namespace Prueba_ejer1.Models.Exportadores;
 
 public class XMLExportador : IExportador
 {
